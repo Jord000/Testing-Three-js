@@ -4,6 +4,7 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import WebGL from 'three/addons/capabilities/WebGL.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
+import { FlyControls } from 'three/addons/controls/FlyControls.js'
 
 //project setup
 const scene = new THREE.Scene();
@@ -33,10 +34,9 @@ new RGBELoader()
     texture.mapping = THREE.EquirectangularReflectionMapping;
     scene.background = texture;
     scene.environment = texture;
-    render()
   });
 
-//import blender file
+// import blender file
 const loader = new GLTFLoader();
 loader.load(
   '../assets/test3Dfile.glb',
@@ -49,9 +49,33 @@ loader.load(
   }
 );
 
+//plane
+const geometry = new THREE.CircleGeometry(5, 32);
+const material = new THREE.MeshBasicMaterial({ color: 101530, side: THREE.DoubleSide });
+const circplane = new THREE.Mesh(geometry, material);
+circplane.rotateX(1.5708)
+circplane.position.setY(-9);
+scene.add(circplane);
+
+//controls
+const controls = new OrbitControls(camera, renderer.domElement)
+controls.autoRotate = true;
+// const fly = new FlyControls(camera, renderer.domElement)
+// // fly.movementSpeed = 1
+// // fly.autoForward = false
+
+
+
+
+
+
 function animate() {
   requestAnimationFrame(animate);
-  renderer.render(scene, camera);
+  renderer.render(scene, camera)
+  controls.update();
+  // fly.update(0.05)
+
+
 }
 if (WebGL.isWebGLAvailable()) {
   animate();
@@ -60,6 +84,5 @@ if (WebGL.isWebGLAvailable()) {
   document.getElementById('container').appendChild(warning);
 }
 
-const controls = new OrbitControls(camera, renderer.domElement);
 
 // ReactDOM.createRoot(document.getElementById('root')).render(<App />);
