@@ -13,7 +13,8 @@ After a career in furniture/interior design this is a way to merge previous mode
 -acquire modifiers of imported mesh (could require applying modifiers prior to export?) ✅\
 -add HDRI to a scene ✅\
 -create a background/plane for context ✅\
--allow controls in a scene\
+-allow controls in a scene ✅\
+-add wasd controls in a scene ✅\
 -resize the scene to a contained div or element on the window\
 -split the file into react components\
 -overlay basic html to simulate a menu\
