@@ -1,9 +1,28 @@
 body {
-  margin: 0
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
+h1 {
+  font-family: sans-serif;
+  color: rgb(77, 196, 77);
+  margin: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 60px;
+
+}
+
+
+.canvas-box {
+  margin: 20px;
+  border: rgb(22, 83, 27) 5px solid;
+  border-radius: 8px;
+  width: 90%;
+  height: 75vh;
+  padding: 10px;
 }

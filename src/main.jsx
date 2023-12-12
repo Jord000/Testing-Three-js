@@ -4,23 +4,47 @@ import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import WebGL from 'three/addons/capabilities/WebGL.js';
 import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
-import { FlyControls } from 'three/addons/controls/FlyControls.js'
 
 //project setup
+const container = document.getElementById('bg');
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
   75,
-  window.innerWidth / window.innerHeight,
+  container.clientWidth / container.clientHeight,
   0.1,
   1000
 );
-const renderer = new THREE.WebGL1Renderer({
+
+const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg'),
 });
 renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(container.clientWidth, container.clientHeight);
 camera.position.setZ(3);
 renderer.render(scene, camera);
+
+
+//controls
+let controls = new OrbitControls(camera, renderer.domElement)
+controls.autoRotate = true;
+controls.screenSpacePanning = true;
+controls.enablePan = true
+controls.maxDistance = 6
+controls.enableDamping = true
+controls.dampingFactor = 0.1
+
+controls.listenToKeyEvents(window);
+controls.keyPanSpeed = 20
+
+window.addEventListener('keydown', (event) => {
+  if (event.code === 'KeyR') {
+    controls.reset()
+  }
+})
+controls.minAzimuthAngle = Math.PI / 4
+controls.maxAzimuthAngle = Math.PI
+controls.minPolarAngle = Math.PI / 4
+controls.maxPolarAngle = Math.PI / 2
 
 //lights
 const ambientlight = new THREE.AmbientLight(0x404040, 30);
@@ -37,10 +61,13 @@ new RGBELoader()
   });
 
 // import blender file
+let flubber
+
 const loader = new GLTFLoader();
 loader.load(
   '../assets/test3Dfile.glb',
   function (gltf) {
+    flubber = gltf.scene
     scene.add(gltf.scene);
   },
   undefined,
@@ -57,23 +84,19 @@ circplane.rotateX(1.5708)
 circplane.position.setY(-9);
 scene.add(circplane);
 
-//controls
-const controls = new OrbitControls(camera, renderer.domElement)
-controls.autoRotate = true;
-// const fly = new FlyControls(camera, renderer.domElement)
-// // fly.movementSpeed = 1
-// // fly.autoForward = false
-
-
-
-
-
 
 function animate() {
   requestAnimationFrame(animate);
+  controls.update()
   renderer.render(scene, camera)
-  controls.update();
-  // fly.update(0.05)
+
+
+  if (flubber) {
+    flubber.rotation.x += 0.01
+    flubber.rotation.y += 0.01
+    flubber.rotation.z += 0.01
+  }
+
 
 
 }
