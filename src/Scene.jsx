@@ -1,17 +1,17 @@
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { Canvas } from '@react-three/fiber'
+import Flubber from './Flubber';
+import { PerspectiveCamera } from '@react-three/drei';
 
 const Scene = () => {
-  const loader = new GLTFLoader();
-  loader.load(
-    '../assets/test3Dfile.glb',
-    function (gltf) {
-      scene.add(gltf.scene);
-    },
-    undefined,
-    function (error) {
-      console.error(error);
-    }
-  );
-};
+
+  return (
+    <Canvas >
+      <ambientLight />
+      <directionalLight color={0xffffff} intensity={0.5} />
+      <PerspectiveCamera fov={75} position={[0, 0, 3]} makeDefault />
+      <Flubber />
+    </Canvas>
+  )
+}
 
 export default Scene;
