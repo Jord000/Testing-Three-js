@@ -1,16 +1,53 @@
 import { Canvas } from '@react-three/fiber'
 import Flubber from './Flubber';
-import { PerspectiveCamera } from '@react-three/drei';
+import { Environment, MapControls, OrbitControls, PerspectiveCamera, PointerLockControls } from '@react-three/drei';
+import { useEffect, useRef, useState } from 'react';
+import Plane from './Plane';
+
 
 const Scene = () => {
+  const [buttonMsg, setButtonMsg] = useState(true)
+  const moveRef = useRef(null)
+
+  const handleEsc = () => {
+    setButtonMsg(!buttonMsg)
+  }
+
+
+  useEffect(() => {
+    document.addEventListener('pointerlockchange', handleEsc);
+    return () => {
+      document.removeEventListener('pointerlockchange', handleEsc);
+    }
+  });
+
+  useEffect(() => {
+    document.addEventListener('keydown', (event) => {
+      if (event.code === 'KeyR') {
+        moveRef.current.reset()
+      }
+    })
+  })
 
   return (
-    <Canvas >
-      <ambientLight />
-      <directionalLight color={0xffffff} intensity={0.5} />
-      <PerspectiveCamera fov={75} position={[0, 0, 3]} makeDefault />
-      <Flubber />
-    </Canvas>
+
+    <div className='canvas-box'>
+      <Canvas id='canvas' >
+        <ambientLight color={0x404040} intensity={30} />
+        <directionalLight color={0xffffff} intensity={0.5} />
+        <PerspectiveCamera fov={75} position={[0, 0, 3]} makeDefault />
+        <Environment files={'../assets/netball_court_4k.hdr'} background />
+        <Flubber />
+        <PointerLockControls selector='#move-around' />
+        {/* <OrbitControls ref={moveRef} /> */}
+        <Plane />
+      </Canvas>
+      <div className='start-flubber'>
+        <button id='move-around' >{buttonMsg ? 'Click To Move Around' : 'Press Esc To Exit Controls'}</button>
+      </div>
+
+    </div>
+
   )
 }
 

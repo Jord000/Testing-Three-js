@@ -4,7 +4,7 @@ import Scene from './Scene';
 
 
 function App() {
-    return <Scene/>
+    return <><h1>Is this Flubber?</h1><Scene /></>
 
 }
 

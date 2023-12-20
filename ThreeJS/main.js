@@ -23,6 +23,20 @@ renderer.setSize(container.clientWidth, container.clientHeight);
 camera.position.setZ(3);
 renderer.render(scene, camera);
 
+//lights
+const ambientlight = new THREE.AmbientLight(0x404040, 30);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+scene.add(directionalLight);
+scene.add(ambientlight);
+
+//hdri
+new RGBELoader()
+  .load('../assets/netball_court_4k.hdr', function (texture) {
+    texture.mapping = THREE.EquirectangularReflectionMapping;
+    scene.background = texture;
+    scene.environment = texture;
+  });
+
 
 //controls
 let controls = new OrbitControls(camera, renderer.domElement)
@@ -46,19 +60,8 @@ controls.maxAzimuthAngle = Math.PI
 controls.minPolarAngle = Math.PI / 4
 controls.maxPolarAngle = Math.PI / 2
 
-//lights
-const ambientlight = new THREE.AmbientLight(0x404040, 30);
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-scene.add(directionalLight);
-scene.add(ambientlight);
 
-//hdri
-new RGBELoader()
-  .load('../assets/netball_court_4k.hdr', function (texture) {
-    texture.mapping = THREE.EquirectangularReflectionMapping;
-    scene.background = texture;
-    scene.environment = texture;
-  });
+
 
 // import blender file
 let flubber
