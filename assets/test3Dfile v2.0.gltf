@@ -1,0 +1,144 @@
+{
+  "asset": {
+    "generator": "Khronos glTF Blender I/O v4.0.44",
+    "version": "2.0"
+  },
+  "extensionsUsed": [
+    "KHR_materials_clearcoat",
+    "KHR_materials_sheen"
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "mesh": 0,
+      "name": "Sphere"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "emissiveFactor": [
+        0.0056013243138494095,
+        0.019999999552965164,
+        0.0040895973721981616
+      ],
+      "extensions": {
+        "KHR_materials_clearcoat": {
+          "clearcoatFactor": 0.12727272510528564,
+          "clearcoatRoughnessFactor": 0.029999999329447746
+        },
+        "KHR_materials_sheen": {
+          "sheenColorFactor": [
+            0.4874027371406555,
+            1,
+            0.04822659492492676
+          ],
+          "sheenRoughnessFactor": 0.3954545557498932
+        }
+      },
+      "name": "Material",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.06968241930007935,
+          0.38447386026382446,
+          0.026122495532035828,
+          1
+        ],
+        "metallicFactor": 0.10000000149011612,
+        "roughnessFactor": 0.25
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "Sphere",
+      "primitives": [
+        {
+          "attributes": {
+            "POSITION": 0,
+            "NORMAL": 1,
+            "TEXCOORD_0": 2
+          },
+          "indices": 3,
+          "material": 0
+        }
+      ]
+    }
+  ],
+  "accessors": [
+    {
+      "bufferView": 0,
+      "componentType": 5126,
+      "count": 559,
+      "max": [
+        1.0112948417663574,
+        1.3534921407699585,
+        1.1698153018951416
+      ],
+      "min": [
+        -1.2360881567001343,
+        -1.0184326171875,
+        -1.0780365467071533
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 559,
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 559,
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5123,
+      "count": 2880,
+      "type": "SCALAR"
+    }
+  ],
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 6708,
+      "byteOffset": 0,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 6708,
+      "byteOffset": 6708,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 4472,
+      "byteOffset": 13416,
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 5760,
+      "byteOffset": 17888,
+      "target": 34963
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "test3Dfile v2.0_data.bin",
+      "byteLength": 23648
+    }
+  ]
+}

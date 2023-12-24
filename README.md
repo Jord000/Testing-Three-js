@@ -18,8 +18,8 @@ After a career in furniture/interior design this is a way to merge previous mode
 -resize the scene to a contained div or element on the window ✅\
 -split the file into react components using React Three Fiber ✅\
 -Achieve the same functionality tasks above✅\
--overlay basic html to simulate a menu\
--create a clickable response to a 3D object\
--allow the import/control of lighting from Blender accurately\
+-overlay basic html to simulate a menu ✅\
+-create a clickable response to a 3D object✅\
+-allow the import/control of lighting from Blender accurately✅\
 -import an animation from blender
 -get liquid to move

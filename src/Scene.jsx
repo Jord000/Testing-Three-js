@@ -1,11 +1,15 @@
 import { Canvas } from '@react-three/fiber'
-import Flubber from './Flubber';
-import { Environment, MapControls, OrbitControls, PerspectiveCamera, PointerLockControls } from '@react-three/drei';
-import { useEffect, useRef, useState } from 'react';
-import Plane from './Plane';
-import FlubberMenu from './FlubberMenu';
-
-
+import Flubber from './Flubber'
+import {
+  Environment,
+  MapControls,
+  OrbitControls,
+  PerspectiveCamera,
+  PointerLockControls,
+} from '@react-three/drei'
+import { useEffect, useRef, useState, Suspense } from 'react'
+import Plane from './Plane'
+import FlubberMenu from './FlubberMenu'
 
 const Scene = () => {
   const [buttonMsg, setButtonMsg] = useState(true)
@@ -16,13 +20,12 @@ const Scene = () => {
     setButtonMsg(!buttonMsg)
   }
 
-
   useEffect(() => {
-    document.addEventListener('pointerlockchange', handleEsc);
+    document.addEventListener('pointerlockchange', handleEsc)
     return () => {
-      document.removeEventListener('pointerlockchange', handleEsc);
+      document.removeEventListener('pointerlockchange', handleEsc)
     }
-  });
+  })
 
   useEffect(() => {
     document.addEventListener('keydown', (event) => {
@@ -33,26 +36,30 @@ const Scene = () => {
   })
 
   return (
-
-    <div className='canvas-box'>
-      <Canvas id='canvas' >
+    <div className="canvas-box">
+      <Canvas id="canvas">
         <ambientLight color={0x404040} intensity={30} />
         <directionalLight color={0xffffff} intensity={0.5} />
         <PerspectiveCamera fov={75} position={[0, 0, 3]} makeDefault />
         <Environment files={'../assets/netball_court_4k.hdr'} background />
-        <Flubber isFlubberMenu={isFlubberMenu} setIsFlubberMenu={setIsFlubberMenu}/>
-        <PointerLockControls selector='#move-around' />
+        <Suspense fallback={null}>
+          <Flubber
+            isFlubberMenu={isFlubberMenu}
+            setIsFlubberMenu={setIsFlubberMenu}
+          />
+        </Suspense>
+        <PointerLockControls selector="#move-around" />
         {/* <OrbitControls ref={moveRef} /> */}
         <Plane />
       </Canvas>
-      {isFlubberMenu && <FlubberMenu/>}
-      <div className='start-flubber'>
-        <button id='move-around' >{buttonMsg ? 'Click To Move Around' : 'Press Esc To Exit Controls'}</button>
+      {isFlubberMenu && <FlubberMenu />}
+      <div className="start-flubber">
+        <button id="move-around">
+          {buttonMsg ? 'Click To Move Around' : 'Press Esc To Exit Controls'}
+        </button>
       </div>
-
     </div>
-
   )
 }
 
-export default Scene;
+export default Scene
