@@ -28,6 +28,7 @@ const Flubber = (props) => {
 
 
   useLayoutEffect(() => {
+    console.log(actions)
     names.forEach((animation) => {
       actions?.[animation]?.play();
     });
