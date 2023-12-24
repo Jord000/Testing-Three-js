@@ -4,6 +4,7 @@ import { Mesh } from 'three'
 import { useFrame } from '@react-three/fiber'
 
 const Flubber = (props) => {
+    const {isFlubberMenu, setIsFlubberMenu} = props
     const flubberRef = useRef(null)
 
     useFrame(() => {
@@ -16,11 +17,16 @@ const Flubber = (props) => {
     })
 
 
+    const flubberMenu = (e)=>{
+        setIsFlubberMenu(!isFlubberMenu)
+    }
+
     const { nodes, materials } = useGLTF("../assets/test3Dfile.glb");
 
     return (
         <group {...props} dispose={null} >
             <mesh
+                onClick={flubberMenu}
                 ref={flubberRef}
                 castShadow
                 receiveShadow

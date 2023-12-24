@@ -3,10 +3,13 @@ import Flubber from './Flubber';
 import { Environment, MapControls, OrbitControls, PerspectiveCamera, PointerLockControls } from '@react-three/drei';
 import { useEffect, useRef, useState } from 'react';
 import Plane from './Plane';
+import FlubberMenu from './FlubberMenu';
+
 
 
 const Scene = () => {
   const [buttonMsg, setButtonMsg] = useState(true)
+  const [isFlubberMenu, setIsFlubberMenu] = useState(false)
   const moveRef = useRef(null)
 
   const handleEsc = () => {
@@ -37,11 +40,12 @@ const Scene = () => {
         <directionalLight color={0xffffff} intensity={0.5} />
         <PerspectiveCamera fov={75} position={[0, 0, 3]} makeDefault />
         <Environment files={'../assets/netball_court_4k.hdr'} background />
-        <Flubber />
+        <Flubber isFlubberMenu={isFlubberMenu} setIsFlubberMenu={setIsFlubberMenu}/>
         <PointerLockControls selector='#move-around' />
         {/* <OrbitControls ref={moveRef} /> */}
         <Plane />
       </Canvas>
+      {isFlubberMenu && <FlubberMenu/>}
       <div className='start-flubber'>
         <button id='move-around' >{buttonMsg ? 'Click To Move Around' : 'Press Esc To Exit Controls'}</button>
       </div>

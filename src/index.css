@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Quicksand:wght@300;400;500;700&display=swap');
 
-
 h1 {
   font-family: sans-serif;
   color: rgb(77, 196, 77);
@@ -33,7 +32,6 @@ body {
   height: 80%;
   padding: 10px;
   object-fit: scale-down;
-
 }
 
 .start-flubber {
@@ -52,4 +50,18 @@ body {
   border: 2px solid rgb(162, 218, 162);
   border-radius: 10px;
   letter-spacing: 2.5px;
+}
+
+.flubber-menu-container {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  height: 35%;
+  background-color: rgba(255, 255, 255, 0.316);
+  padding: 20px;
+}
+.flubber-menu-container img {
+  height: 80%;
 }
