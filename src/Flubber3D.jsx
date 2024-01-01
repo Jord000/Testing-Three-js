@@ -5,7 +5,7 @@ import { useGLTF, useAnimations } from "@react-three/drei";
 
 export default function Sphere2(props) {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF('../public/flubber3D.glb');
+  const { nodes, materials, animations } = useGLTF('/flubber3D.glb');
   const { actions } = useAnimations(animations, group);
 
   useEffect(()=>{
@@ -28,4 +28,4 @@ export default function Sphere2(props) {
   );
 }
 
-useGLTF.preload('../public/flubber3D.glb');
+useGLTF.preload('/flubber3D.glb');
