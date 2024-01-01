@@ -1,1 +1,7 @@
 node_modules
+
+# Local Netlify folder
+.netlify
+
+#3d files
+3dassets

@@ -41,7 +41,7 @@ const Scene = () => {
         <ambientLight color={0x404040} intensity={30} />
         <directionalLight color={0xffffff} intensity={0.5} />
         <PerspectiveCamera fov={75} position={[-4, 0, 3]} makeDefault />
-        <Environment files={'../assets/netball_court_4k.hdr'} background />
+        <Environment files={'../public/netball_court_4k.hdr'} background />
         <Suspense fallback={null}>
           <Flubber
             isFlubberMenu={isFlubberMenu}
