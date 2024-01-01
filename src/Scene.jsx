@@ -40,7 +40,7 @@ const Scene = () => {
       <Canvas id="canvas">
         <ambientLight color={0x404040} intensity={30} />
         <directionalLight color={0xffffff} intensity={0.5} />
-        <PerspectiveCamera fov={75} position={[0, 0, 3]} makeDefault />
+        <PerspectiveCamera fov={75} position={[-4, 0, 3]} makeDefault />
         <Environment files={'../assets/netball_court_4k.hdr'} background />
         <Suspense fallback={null}>
           <Flubber
@@ -52,10 +52,17 @@ const Scene = () => {
         <OrbitControls ref={moveRef} />
         <Plane />
       </Canvas>
-      {isFlubberMenu && <FlubberMenu />}
+      {isFlubberMenu && (
+        <FlubberMenu
+          isFlubberMenu={isFlubberMenu}
+          setIsFlubberMenu={setIsFlubberMenu}
+        />
+      )}
       <div className="start-flubber">
         <button id="move-around">
-          {buttonMsg ? 'Left click to orbit - right click to pan and mi' : 'Press Esc To Exit Controls'}
+          {buttonMsg
+            ? 'Left click to orbit - right click to pan  - middle mouse to zoom'
+            : 'Press Esc To Exit Controls'}
         </button>
       </div>
     </div>
