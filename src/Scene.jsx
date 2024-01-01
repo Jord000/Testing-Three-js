@@ -48,14 +48,14 @@ const Scene = () => {
             setIsFlubberMenu={setIsFlubberMenu}
           />
         </Suspense>
-        <PointerLockControls selector="#move-around" />
-        {/* <OrbitControls ref={moveRef} /> */}
+        {/* <PointerLockControls selector="#move-around" /> */}
+        <OrbitControls ref={moveRef} />
         <Plane />
       </Canvas>
       {isFlubberMenu && <FlubberMenu />}
       <div className="start-flubber">
         <button id="move-around">
-          {buttonMsg ? 'Click To Move Around' : 'Press Esc To Exit Controls'}
+          {buttonMsg ? 'Left click to orbit - right click to pan and mi' : 'Press Esc To Exit Controls'}
         </button>
       </div>
     </div>
