@@ -1,4 +1,4 @@
-# Testing-Three-js & React Three Fiber
+# Testing-Three-js & React Three Fiber - FLUBBER
 
 # Introduction
 
@@ -21,5 +21,5 @@ After a career in furniture/interior design this is a way to merge previous mode
 -overlay basic html to simulate a menu ✅\
 -create a clickable response to a 3D object✅\
 -allow the import/control of lighting from Blender accurately✅\
--import an animation from blender
--get liquid to move
+-import an animation from blender✅\
+-get liquid to move✅\
