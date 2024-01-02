@@ -12,12 +12,15 @@ import Plane from './Plane'
 import FlubberMenu from './FlubberMenu'
 
 const Scene = () => {
-  const [buttonMsg, setButtonMsg] = useState(true)
+  const [isButtonMsg, setIsButtonMsg] = useState(true)
   const [isFlubberMenu, setIsFlubberMenu] = useState(false)
   const moveRef = useRef(null)
+  const [defaultControlMsg, setDefaultControlMsg] = useState(
+    'Left click to orbit - right click to pan - middle mouse to zoom'
+  )
 
   const handleEsc = () => {
-    setButtonMsg(!buttonMsg)
+    setIsButtonMsg(!isButtonMsg)
   }
 
   useEffect(() => {
@@ -60,9 +63,9 @@ const Scene = () => {
       )}
       <div className="start-flubber">
         <button id="move-around">
-          {buttonMsg
-            ? 'Left click to orbit - right click to pan  - middle mouse to zoom'
-            : 'Press Esc To Exit Controls'}
+          {/* {isButtonMsg ? 'click to control' : 'Press Esc To Exit Controls'} */}
+       <span className='buttonTextSmallScreen'>try drag or pan with touchscreen controls</span>
+       <span className='buttonTextLargeScreen'>Left click to orbit - right click to pan - middle mouse to zoom</span>
         </button>
       </div>
     </div>
