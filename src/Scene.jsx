@@ -1,6 +1,7 @@
 import { Canvas } from '@react-three/fiber'
 import Flubber from './Flubber'
 import {
+  Loader,
   Environment,
   MapControls,
   OrbitControls,
@@ -11,13 +12,12 @@ import { useEffect, useRef, useState, Suspense } from 'react'
 import Plane from './Plane'
 import FlubberMenu from './FlubberMenu'
 
+
 const Scene = () => {
   const [isButtonMsg, setIsButtonMsg] = useState(true)
   const [isFlubberMenu, setIsFlubberMenu] = useState(false)
   const moveRef = useRef(null)
-  const [defaultControlMsg, setDefaultControlMsg] = useState(
-    'Left click to orbit - right click to pan - middle mouse to zoom'
-  )
+ 
 
   const handleEsc = () => {
     setIsButtonMsg(!isButtonMsg)
@@ -55,6 +55,7 @@ const Scene = () => {
         <OrbitControls ref={moveRef} />
         <Plane />
       </Canvas>
+      <Loader/>
       {isFlubberMenu && (
         <FlubberMenu
           isFlubberMenu={isFlubberMenu}
