@@ -5,7 +5,7 @@ import { useGLTF, useAnimations } from "@react-three/drei";
 
 export default function Sphere2(props) {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF('/flubber3D.glb');
+  const { nodes, materials, animations } = useGLTF('/flubber3D-v2.glb');
   const { actions } = useAnimations(animations, group);
 
   useEffect(()=>{
@@ -15,17 +15,17 @@ export default function Sphere2(props) {
     <group ref={group} {...props} dispose={null}>
       <group name="Scene">
         <mesh
-          name="Sphere"
+          name="Sphere_1"
           castShadow
           receiveShadow
-          geometry={nodes.Sphere.geometry}
+          geometry={nodes.Sphere_1.geometry}
           material={materials.Material}
-          morphTargetDictionary={nodes.Sphere.morphTargetDictionary}
-          morphTargetInfluences={nodes.Sphere.morphTargetInfluences}
+          morphTargetDictionary={nodes.Sphere_1.morphTargetDictionary}
+          morphTargetInfluences={nodes.Sphere_1.morphTargetInfluences}
         />
       </group>
     </group>
   );
 }
 
-useGLTF.preload('/flubber3D.glb');
+useGLTF.preload('/flubber3D-v2.glb');
